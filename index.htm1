@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>برای پرستو ❤️</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:linear-gradient(135deg,#090909,#1a0008,#050505);
+    color:white;
+    font-family:Tahoma,Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.box{
+    width:90%;
+    max-width:430px;
+    padding:30px 22px;
+    border-radius:25px;
+    background:rgba(20,20,20,.88);
+    border:1px solid rgba(255,70,100,.35);
+    box-shadow:0 0 35px rgba(255,0,60,.18);
+    text-align:center;
+}
+
+.heart{
+    font-size:55px;
+    animation:pulse 1.5s infinite;
+}
+
+h1{
+    font-size:25px;
+    margin:12px 0 20px;
+}
+
+p{
+    font-size:18px;
+    line-height:2;
+    min-height:70px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin-top:25px;
+}
+
+button{
+    border:0;
+    border-radius:14px;
+    padding:13px 28px;
+    font-size:17px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.yes{
+    background:#e91e63;
+    color:white;
+}
+
+.no{
+    background:#333;
+    color:white;
+}
+
+button:active{
+    transform:scale(.94);
+}
+
+#result{
+    margin-top:20px;
+    font-size:17px;
+    line-height:2;
+    min-height:55px;
+}
+
+.hidden{
+    display:none;
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.12)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <div class="heart">❤️</div>
+
+    <h1 id="title">پرستو...</h1>
+
+    <p id="question">
+        یه سؤال دارم که فقط خودت می‌تونی جوابشو بدی...
+    </p>
+
+    <div class="buttons" id="buttons">
+        <button class="yes" onclick="yesAnswer()">آره ❤️</button>
+        <button class="no" onclick="noAnswer()">نه</button>
+    </div>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+let noCount = 0;
+
+function yesAnswer(){
+
+    document.getElementById("title").innerText = "پرستو ❤️";
+
+    document.getElementById("question").innerText =
+    "پس هنوز یه گوشه از قلبت برای این رابطه هست... ❤️";
+
+    document.getElementById("result").innerText =
+    "ممنون که جواب دادی.";
+
+    document.getElementById("buttons").innerHTML =
+    '<button class="yes" onclick="nextQuestion()">ادامه ❤️</button>';
+}
+
+function noAnswer(){
+
+    noCount++;
+
+    const question = document.getElementById("question");
+    const result = document.getElementById("result");
+
+    if(noCount === 1){
+
+        result.innerText =
+        "فقط یه بار دیگه فکر کن... بعضی جواب‌ها شاید از روی ناراحتی گفته بشن.";
+
+    }
+
+    else if(noCount === 2){
+
+        result.innerText =
+        "باشه... ولی من هنوز منتظر یه جواب واقعی ازت هستم.";
+
+    }
+
+    else if(noCount === 3){
+
+        result.innerText =
+        "چرا؟ خیلی ناراحتم...";
+
+    }
+
+    else{
+
+        result.innerText =
+        "فقط می‌خواستم بدونی این سؤال برای من واقعاً مهم بود...";
+
+    }
+
+    question.innerText =
+    "هنوز می‌خوای «نه» رو انتخاب کنی؟";
+
+}
+
+function nextQuestion(){
+
+    document.getElementById("title").innerText =
+    "یه سؤال دیگه... ❤️";
+
+    document.getElementById("question").innerText =
+    "اگه برگردی به روزی که منو شناختی، باز هم انتخابم می‌کنی؟";
+
+    document.getElementById("result").innerText = "";
+
+    document.getElementById("buttons").innerHTML =
+    '<button class="yes" onclick="finalYes()">آره ❤️</button>' +
+    '<button class="no" onclick="finalNo()">نه</button>';
+}
+
+function finalYes(){
+
+    document.getElementById("title").innerText =
+    "پس هنوز... ❤️";
+
+    document.getElementById("question").innerText =
+    "شاید بعضی آدم‌ها قرار نیست فقط یه اتفاق کوتاه توی زندگی هم باشن.";
+
+    document.getElementById("result").innerText =
+    "ممنون که تا آخرش موندی. ❤️";
+
+    document.getElementById("buttons").innerHTML = "";
+}
+
+function finalNo(){
+
+    document.getElementById("question").innerText =
+    "چرا خیلی ناراحت...";
+
+    document.getElementById("result").innerText =
+    "گاهی یه جواب کوتاه، کلی حرف پشت خودش داره.";
+
+    document.getElementById("buttons").innerHTML = "";
+}
+
+</script>
+
+</body>
+</html>
